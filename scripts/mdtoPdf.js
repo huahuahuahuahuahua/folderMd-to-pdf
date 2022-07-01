@@ -1,24 +1,10 @@
-// var markdownpdf = require("markdown-pdf")
-// var fs = require("fs")
-// var md = "README.md"
-// var pdf = md.replace(".md", ".pdf");
-
-// markdownpdf().from(md).to(pdf, () => {
-//     console.log("\x1b[32m", "Created", pdf);
-// });
-
-// fs.createReadStream("README.md")
-//     .pipe(markdownpdf())
-//     .pipe(fs.createWriteStream("README.pdf"))
-// markdownpdf().from("README.md").to("README.pdf", function () {
-//     console.log("Done")
-// })
 const fs = require('fs');
 const { mdToPdf } = require('md-to-pdf');
+const paths = require('./paths');
 
 async function mdtoPdf(inputMdPath,outputPdfPath) {
     const pdf = await mdToPdf({ path: inputMdPath }, {
-        highlight_style: "color-brewer",
+        highlight_style: "monokai",//color-brewer
         body_class: ["dark", "content"],
         // css: `body { color: tomato; }`,
         // css: `\`${require("../config/mdConfig.css")}\``,
@@ -28,6 +14,7 @@ async function mdtoPdf(inputMdPath,outputPdfPath) {
             printBackground: true
         },
         stylesheet_encoding: 'utf-8',
+        stylesheet: `${paths.config}\\vue.css`,
     }).catch(console.error);
     if (pdf) {
 		fs.writeFileSync(outputPdfPath, pdf.content);
@@ -36,3 +23,6 @@ async function mdtoPdf(inputMdPath,outputPdfPath) {
 module.exports = {
     mdtoPdf
 }
+
+
+console.log(`${paths.config}\\vue.css`)

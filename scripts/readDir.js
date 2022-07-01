@@ -1,19 +1,24 @@
 const fs = require('fs')
 const path = require('path')
 const paths = require('./paths')
+const {
+    warn,
+    info,
+    error,
+    success,
+    fali, } = require("./logger");
 let count = 0;
 // 复制文件
 function copyFile(orgfilepath, desdirpath, desfilename) {
     if (fs.existsSync(orgfilepath)) {
         let desfilepath = path.join(desdirpath, desfilename);
         if (!fs.existsSync(desfilepath)) {
-            // createFolder(desdirpath);
             fs.copyFileSync(orgfilepath, desfilepath);
         } else {
-            console.error(Date().toString() + "FolderAndFileOperation_copyFile: des file already existed." + " new path: " + desfilepath.toString());
+            fali(Date().toString() + "FolderAndFileOperation_copyFile: des file already existed." + " new path: " + desfilepath.toString());
         }
     } else {
-        console.error(Date().toString() + "FolderAndFileOperation_copyFile: org file not existed." + " org path: " + orgfilepath.toString());
+        fali(Date().toString() + "FolderAndFileOperation_copyFile: org file not existed." + " org path: " + orgfilepath.toString());
     }
 }
 // 读取文件夹
@@ -31,12 +36,12 @@ async function readdirectory(folderPath, filepath, outputMdPath) {
         files.forEach((item, index) => {
             // 拿到子文件的路径
             let itemFilepath = filepath + '\\' + item
-            console.log(item, itemFilepath)
+            info(item, itemFilepath)
             // 拿到详细信息
             let stat = fs.statSync(itemFilepath)
             // 判断是否文件且是md后缀文件
             if (stat.isFile() && itemFilepath.indexOf(".md") > -1) {
-                console.log(filepath)
+                info(filepath)
                 copyFile(itemFilepath, outputMdPath, `${count}-${item}`)
                 count++
             } 

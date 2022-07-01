@@ -5,6 +5,7 @@ const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 module.exports={
     appPath: resolveApp('.'),
     scriptPath: resolveApp("script"),
+    config: resolveApp("config"),
     testPath: resolveApp("test"),
     appPackageJson: resolveApp('package.json'),
 }

@@ -10,17 +10,17 @@ const {
     error,
     success,
     fali, } = require("./scripts/logger");
-
 const dirArray = require("./package.json").needHandle_files
 // 文件名称
-let dir = "coder2gwy-main"
+// let dir = "coder2gwy-main"
+let dir = dirArray[dirArray.length-2]
 // 文件夹路径
 let folderPath = "test\\" + dir
 // 输出的md目录路径
 let outputPath = paths.appPath + "\\" + folderPath + '-copy'
 // 输出汇总的md文件
 let outputMdPath = paths.appPath + "\\" + folderPath + '-zh.md'
-var outputPdfPath = outputMdPath.replace(".md", ".pdf");
+var outputPdfPath = outputMdPath.replace(".md", "1.pdf");
 //要读取的子目录
 let subFolderPath =  paths.appPath + "\\" + folderPath
 async function index(folderPath) {
@@ -41,12 +41,14 @@ async function index(folderPath) {
             const deleteRes =await deleteFolder(path)
             deleteRes&&console.info("------------------移除复制的文件夹-------------")
         }
+        info("------------------开始转换成pdf-------------")
         mergeFileRes && mdtoPdf(outputMdPath, outputPdfPath)
+
     }else{
         error(`------------------------拷贝文件夹失败---------------------${readdirectoryRes}`)
     }
 }
-
+// mdtoPdf(outputMdPath, outputPdfPath)
  index(folderPath)
 
 

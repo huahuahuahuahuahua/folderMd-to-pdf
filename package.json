@@ -15,7 +15,9 @@
     "summary-1",
     "backend-interview-master",
     "blockchain-cheatsheet-master",
-    "Java-Notes-master"
+    "Java-Notes-master",
+    "coder2gwy-main",
+    "web-interview-master"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -23,7 +25,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chalk": "^4.0.1",
+    "express": "^4.18.1",
     "md-to-pdf": "^5.1.0",
-    "chalk": "^4.0.1"
+    "multiparty": "^4.2.3"
   }
 }

@@ -1,4 +1,10 @@
 const fs = require('fs')
+const {
+    warn,
+    info,
+    error,
+    success,
+    fali, } = require("./logger");
 function deleteFolder(dirPath) {
     return new Promise((resolve, reject) => {
         var files = [];
@@ -17,7 +23,7 @@ function deleteFolder(dirPath) {
         }
         resolve("--------------------移除文件夹成功----------------------")
     }).then((res)=>{
-        console.info(res)
+        info(res)
         return true
     })
 };
