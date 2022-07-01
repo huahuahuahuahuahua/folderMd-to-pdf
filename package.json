@@ -1,0 +1,29 @@
+{
+  "name": "eth-frontend-go",
+  "version": "1.0.0",
+  "description": "`readDir` 是用于读取文件夹下所有文件的（包括子文件夹）",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "needHandle_files": [
+    "blog-master",
+    "eth-zh",
+    "Front-End-Interview-Notebook-master",
+    "go_interview-master",
+    "Golang-Interview-master",
+    "summary-1",
+    "backend-interview-master",
+    "blockchain-cheatsheet-master",
+    "Java-Notes-master"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "md-to-pdf": "^5.1.0",
+    "chalk": "^4.0.1"
+  }
+}
